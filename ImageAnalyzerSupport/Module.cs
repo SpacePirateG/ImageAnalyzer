@@ -14,6 +14,7 @@ namespace ImageAnalyzer {
 			set;
 		}
 
+		[BsonElement("path")]
 		public string Path {
 			get;
 			set;

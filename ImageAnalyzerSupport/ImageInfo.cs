@@ -10,11 +10,13 @@ namespace ImageAnalyzer {
 	[BsonIgnoreExtraElements]
 	public class ImageInfo {
 
+		[BsonElement("module")]
 		public string Module {
 			get;
 			set;
 		}
 
+		[BsonElement("properties")]
 		public IEnumerable<ImageProperty> Properties {
 			get;
 			set;

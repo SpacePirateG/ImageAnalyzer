@@ -15,11 +15,13 @@ namespace ImageAnalyzer {
 			set;
 		}
 
+		[BsonElement("data")]
 		public string Data {
 			get;
 			set;
 		}
 
+		[BsonElement("info")]
 		public IEnumerable<ImageInfo> Info {
 			get;
 			set;

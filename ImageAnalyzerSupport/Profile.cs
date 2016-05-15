@@ -15,11 +15,13 @@ namespace ImageAnalyzer {
 			set;
 		}
 
+		[BsonElement("url")]
 		public String Url {
 			get;
 			set;
 		}
 
+		[BsonElement("state")]
 		public String State {
 			get;
 			set;

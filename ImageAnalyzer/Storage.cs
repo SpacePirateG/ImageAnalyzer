@@ -5,60 +5,51 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 
 namespace ImageAnalyzer {
 	class Storage {
 
-			private IMongoClient _client;
-			private IMongoDatabase _database;
-			private IMongoCollection<Image> _collection;
+		private IMongoClient _client;
+		private IMongoDatabase _database;
+		private IMongoCollection<Image> _images;
+		private IMongoCollection<Module> _modules;
 
-			public Storage () {
-				initClassMaps();
+		public Storage () {
+			//initClassMaps();
 
-				_client = new MongoClient();
-				_database = _client.GetDatabase("work");
-				_collection = _database.GetCollection<Image>("images");
+			_client = new MongoClient();
+			_database = _client.GetDatabase("work");
+			_images = _database.GetCollection<Image>("images");
+			_modules = _database.GetCollection<Module>("modules");
 
-			}
-
-			private void initClassMaps () {
-				BsonClassMap.RegisterClassMap<ImageProperty>(cm => {
-					cm.AutoMap();
-					cm.MapMember(c => c.Name).SetElementName("name");
-					cm.MapMember(c => c.Type).SetElementName("type");
-					cm.MapMember(c => c.Value).SetElementName("value");
-				});
-
-
-				BsonClassMap.RegisterClassMap<ImageInfo>(cm => {
-					cm.AutoMap();
-					cm.MapMember(c => c.Module).SetElementName("module");
-					cm.MapMember(c => c.Properties).SetElementName("properties");
-				});
-
-				BsonClassMap.RegisterClassMap<Image>(cm => {
-					cm.AutoMap();
-					cm.MapMember(c => c.Data).SetElementName("data");
-					cm.MapMember(c => c.Info).SetElementName("info");
-				});
-			}
-
-			public async Task<Image> getNextRawImage (String moduleName) {
-			
-			var builder = Builders<Image>.Filter;
-			var filter = builder.Where(elem => !elem.Info.Any(info => info.Module == moduleName));
-			Image result = await _collection.Find(filter).FirstOrDefaultAsync();
-
-			return result;
 		}
 
-			public async Task addImageInfo (Image image, ImageInfo imageInfo) {
-				var filter = Builders<Image>.Filter.Eq("_id", image.Id);
-				var update = Builders<Image>.Update.Push(img => img.Info, imageInfo);
+		public List<String> GetModulesPaths(){
+			
+			List<string> modulesPaths = _modules.Find(new BsonDocument())
+				.ToList()
+				.Select(module => module.Path)
+				.ToList();
 
-				var result = await _collection.UpdateOneAsync(filter, update);
-			}
+			return modulesPaths;
+		}
+
+		public async Task<Image> getNextRawImage (String moduleName) {
+		
+		var builder = Builders<Image>.Filter;
+		var filter = builder.Where(elem => !elem.Info.Any(info => info.Module == moduleName));
+		Image result = await _images.Find(filter).FirstOrDefaultAsync();
+
+		return result;
+		}
+
+		public async Task addImageInfo (Image image, ImageInfo imageInfo) {
+			var filter = Builders<Image>.Filter.Eq("_id", image.Id);
+			var update = Builders<Image>.Update.Push(img => img.Info, imageInfo);
+
+			var result = await _images.UpdateOneAsync(filter, update);
+		}
 		
 	}
 }

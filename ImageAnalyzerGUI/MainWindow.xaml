@@ -9,8 +9,9 @@
         <Button Name="Browse" Content="Обзор" HorizontalAlignment="Left" Margin="399,146,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Click="Browse_Click"/>
         <TextBox Name="ModulePath" HorizontalAlignment="Left" Height="38" Margin="10,144,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="384" FontSize="20"/>
         <Label Content="Путь :" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button Name="Start" Content="Запуск системы" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="301" FontSize="36" Click="Start_Click"/>
+        <Button Name="Start" Content="Запуск системы" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="287" FontSize="24" Click="Start_Click"/>
         <Button Name="AddProfiles" Content="Добавить" HorizontalAlignment="Left" Margin="10,505,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Click="AddProfiles_Click"/>
         <Button Name="AddPModule" Content="Добавить" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="1.528,-0.287" FontSize="20" Click="AddPModule_Click"/>
+        <Button Name="Stop" Content="Остановить" HorizontalAlignment="Left" Margin="316,10,0,0" VerticalAlignment="Top" Width="191" FontSize="24" Click="Stop_Click"/>
     </Grid>
 </Window>

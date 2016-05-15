@@ -39,7 +39,6 @@ namespace ImageAnalyzer {
 
 				BsonClassMap.RegisterClassMap<Image>(cm => {
 					cm.AutoMap();
-					cm.MapMember(c => c.__V).SetElementName("__v");
 					cm.MapMember(c => c.Data).SetElementName("data");
 					cm.MapMember(c => c.Info).SetElementName("info");
 				});

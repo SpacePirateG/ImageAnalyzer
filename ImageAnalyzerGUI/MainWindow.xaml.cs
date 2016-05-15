@@ -67,6 +67,9 @@ namespace ImageAnalyzerGUI {
 			};
 
 			storage.AddModule(module);
+
+			_analyzer.Kill();
+			_analyzer.Start();
 		}
 
 		private void AddProfiles_Click (object sender, RoutedEventArgs e) {

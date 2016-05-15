@@ -1,0 +1,13 @@
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\bin\Debug\ImageAnalyzerGUI.exe.config
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\bin\Debug\ImageAnalyzerGUI.exe
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\bin\Debug\ImageAnalyzerGUI.pdb
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.csprojResolveAssemblyReference.cache
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\MainWindow.baml
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\MainWindow.g.cs
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\App.g.cs
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI_MarkupCompile.cache
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.g.resources
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.Properties.Resources.resources
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.csproj.GenerateResource.Cache
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.exe
+C:\Projects\ImageAnalyzer\ImageAnalyzerGUI\obj\Debug\ImageAnalyzerGUI.pdb

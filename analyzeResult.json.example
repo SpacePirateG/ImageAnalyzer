@@ -1,0 +1,18 @@
+{
+	"module": "sizer",
+	"properties": [
+		{
+			"name": "width",
+			"desc": "image width in pixels",
+			"type": "INT"
+			"value": "1000"
+		},
+		{
+			"name": "height",
+			"desc": "image height in pixels",
+			"type": "INT"
+			"value": "700"
+		}
+	]
+
+}

@@ -7,12 +7,8 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ImageAnalyzer {
+	[BsonIgnoreExtraElements]
 	public class ImageProperty {
-
-		public ObjectId Id {
-			get;
-			set;
-		}
 
 		public string Name {
 			get;
@@ -29,13 +25,6 @@ namespace ImageAnalyzer {
 			get;
 			set;
 		}
-
-		//public ImageProperty(string name, string type, string value)
-		//{
-		//	this.Name = name;
-		//	this.Type = type;
-		//	this.Value = value;
-		//}
 	}
 
 	public enum TypeEnum {

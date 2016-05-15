@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
+
 namespace ImageAnalyzer {
 	[BsonIgnoreExtraElements]
-	public class ImageInfo {
-
-		public string Module {
+	public class Profile {
+		public ObjectId Id {
 			get;
 			set;
 		}
 
-		public IEnumerable<ImageProperty> Properties {
+		public String Url {
+			get;
+			set;
+		}
+
+		public String State {
 			get;
 			set;
 		}

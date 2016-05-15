@@ -50,6 +50,8 @@
     <Compile Include="Image.cs" />
     <Compile Include="ImageInfo.cs" />
     <Compile Include="ImageProperty.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

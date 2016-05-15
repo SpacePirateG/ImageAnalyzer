@@ -8,14 +8,13 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ImageAnalyzer {
 	[BsonIgnoreExtraElements]
-	public class ImageInfo {
-
-		public string Module {
+	public class Module {
+		public ObjectId Id {
 			get;
 			set;
 		}
 
-		public IEnumerable<ImageProperty> Properties {
+		public string Path {
 			get;
 			set;
 		}

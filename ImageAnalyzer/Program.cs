@@ -12,56 +12,24 @@ namespace ImageAnalyzer
 {
 	class Program
 	{
-		static Storage imageProvider;
+		static Storage storage;
 		static List<IAnalyzeModule> analyzeModules = new List<IAnalyzeModule>();
 
 		static string[] getModulesPaths()
 		{
 
-			List<String> paths = new List<string>(){
-				@"c:\Projects\ImageAnalyzer\bin\Debug\SizeModule.dll"
-			};
+			List<String> paths = storage.GetModulesPaths();
 
 			return paths.ToArray<String>();
 		}
 
 		static void Main(string[] args)
 		{
-			imageProvider = new Storage();
-			//TestDB().Wait();
+			storage = new Storage();
 			loadAllModules();
 			runModules();
 			while (true) {}
 		}
-
-		//static private async Task TestDB () {
-
-		//	var moduleName = "testStrangeModule";
-		//	Image img = await imageProvider.getNextRawImage(moduleName);
-		//	Console.WriteLine(img);
-
-		//	ImageInfo imageInfo = new ImageInfo(){
-		//		Module = moduleName
-		//	};
-
-		//	List<ImageProperty> imageProps = new List<ImageProperty>(){
-		//		new ImageProperty(){
-		//			Name = "xa",
-		//			Type = TypeEnum.DOUBLE,
-		//			Value = "0.11"
-		//		},
-		//		new ImageProperty(){
-		//			Name = "control",
-		//			Type = TypeEnum.BOOL,
-		//			Value = "true"
-		//		}
-		//	};
-
-		//	imageInfo.Properties = imageProps;
-
-		//	await imageProvider.addImageInfo(img, imageInfo);
-		//	Console.WriteLine("good");
-		//}
 
 
 		static private void loadAllModules() {
@@ -88,12 +56,12 @@ namespace ImageAnalyzer
 
 		static public async Task execModule (IAnalyzeModule module) {
 			while (true) {
-				Image image = await imageProvider.getNextRawImage(module.ModuleName);
+				Image image = await storage.getNextRawImage(module.ModuleName);
 
 				byte[] raw = Convert.FromBase64String(image.Data);
 				ImageInfo imageInfo =await module.Analyze(raw);
 
-				await imageProvider.addImageInfo(image, imageInfo);
+				await storage.addImageInfo(image, imageInfo);
 			}
 		}
 

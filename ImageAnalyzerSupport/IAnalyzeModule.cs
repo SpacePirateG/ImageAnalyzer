@@ -12,7 +12,6 @@ namespace ImageAnalyzer
 			get;
 		}
 
-		//return valid analyzeResult json
 		Task<ImageInfo> Analyze(byte[] image);
 	}
 }

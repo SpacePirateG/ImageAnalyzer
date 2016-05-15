@@ -1,5 +1,0 @@
-C:\Projects\ImageAnalyzer\bin\Debug\AnalyzeModuleInterface.dll
-C:\Projects\ImageAnalyzer\bin\Debug\AnalyzeModuleInterface.pdb
-C:\Projects\ImageAnalyzer\AnalyzeModuleInterface\obj\Debug\AnalyzeModuleInterface.dll
-C:\Projects\ImageAnalyzer\AnalyzeModuleInterface\obj\Debug\AnalyzeModuleInterface.pdb
-C:\Projects\ImageAnalyzer\AnalyzeModuleInterface\obj\Debug\AnalyzeModuleInterface.csprojResolveAssemblyReference.cache

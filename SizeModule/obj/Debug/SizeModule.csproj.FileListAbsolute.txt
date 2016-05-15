@@ -1,9 +1,0 @@
-C:\Projects\ImageAnalyzer\SizeModule\bin\Debug\SizeModule.dll
-C:\Projects\ImageAnalyzer\SizeModule\bin\Debug\SizeModule.pdb
-C:\Projects\ImageAnalyzer\SizeModule\obj\Debug\SizeModule.csprojResolveAssemblyReference.cache
-C:\Projects\ImageAnalyzer\SizeModule\obj\Debug\SizeModule.dll
-C:\Projects\ImageAnalyzer\SizeModule\obj\Debug\SizeModule.pdb
-C:\Projects\ImageAnalyzer\SizeModule\bin\Debug\AnalyzeModuleInterface.dll
-C:\Projects\ImageAnalyzer\SizeModule\bin\Debug\AnalyzeModuleInterface.pdb
-C:\Projects\ImageAnalyzer\bin\Debug\SizeModule.dll
-C:\Projects\ImageAnalyzer\bin\Debug\SizeModule.pdb

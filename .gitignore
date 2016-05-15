@@ -1,6 +1,3 @@
-/bin
-/ImageAnalyzer/bin
-/ImageAnalyzerGUI/bin
-/ImageAnalyzerSupport/bin
-/SizeModule/bin
-/*.suo
+bin
+obj
+*.suo

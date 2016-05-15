@@ -1,4 +1,0 @@
-C:\Projects\ImageAnalyzer\bin\Debug\AnalyzeModuleSupport.dll
-C:\Projects\ImageAnalyzer\bin\Debug\AnalyzeModuleSupport.pdb
-C:\Projects\ImageAnalyzer\AnalyzeModuleInterface\obj\Debug\AnalyzeModuleSupport.dll
-C:\Projects\ImageAnalyzer\AnalyzeModuleInterface\obj\Debug\AnalyzeModuleSupport.pdb

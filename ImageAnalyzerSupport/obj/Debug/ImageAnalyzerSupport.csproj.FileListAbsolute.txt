@@ -1,5 +1,0 @@
-C:\Projects\ImageAnalyzer\bin\Debug\ImageAnalyzerSupport.dll
-C:\Projects\ImageAnalyzer\bin\Debug\ImageAnalyzerSupport.pdb
-C:\Projects\ImageAnalyzer\ImageAnalyzerSupport\obj\Debug\ImageAnalyzerSupport.csprojResolveAssemblyReference.cache
-C:\Projects\ImageAnalyzer\ImageAnalyzerSupport\obj\Debug\ImageAnalyzerSupport.dll
-C:\Projects\ImageAnalyzer\ImageAnalyzerSupport\obj\Debug\ImageAnalyzerSupport.pdb

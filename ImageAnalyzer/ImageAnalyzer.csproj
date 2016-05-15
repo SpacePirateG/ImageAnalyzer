@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageProvider.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>

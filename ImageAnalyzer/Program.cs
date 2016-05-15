@@ -12,7 +12,7 @@ namespace ImageAnalyzer
 {
 	class Program
 	{
-		static ImageProvider imageProvider;
+		static Storage imageProvider;
 		static List<IAnalyzeModule> analyzeModules = new List<IAnalyzeModule>();
 
 		static string[] getModulesPaths()
@@ -27,7 +27,7 @@ namespace ImageAnalyzer
 
 		static void Main(string[] args)
 		{
-			imageProvider = new ImageProvider();
+			imageProvider = new Storage();
 			//TestDB().Wait();
 			loadAllModules();
 			runModules();

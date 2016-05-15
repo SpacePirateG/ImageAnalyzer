@@ -7,13 +7,13 @@ using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
 
 namespace ImageAnalyzer {
-	class ImageProvider {
+	class Storage {
 
 			private IMongoClient _client;
 			private IMongoDatabase _database;
 			private IMongoCollection<Image> _collection;
 
-			public ImageProvider () {
+			public Storage () {
 				initClassMaps();
 
 				_client = new MongoClient();

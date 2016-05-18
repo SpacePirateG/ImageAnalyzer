@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
-
+using System.Threading;
 
 
 namespace ImageAnalyzer
@@ -55,13 +55,16 @@ namespace ImageAnalyzer
 		}
 
 		static public async Task execModule (IAnalyzeModule module) {
+			Storage localStorage = new Storage();
 			while (true) {
-				Image image = await storage.getNextRawImage(module.ModuleName);
+				Image image = await localStorage.getNextRawImage(module.ModuleName);
 
 				byte[] raw = Convert.FromBase64String(image.Data);
 				ImageInfo imageInfo =await module.Analyze(raw);
 
-				await storage.addImageInfo(image, imageInfo);
+				await localStorage.addImageInfo(image, imageInfo);
+				Console.WriteLine("done: " + image.Id);
+				Thread.Sleep(5000);
 			}
 		}
 

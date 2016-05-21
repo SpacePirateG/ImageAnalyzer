@@ -63,8 +63,8 @@ namespace ImageAnalyzer
 				ImageInfo imageInfo =await module.Analyze(raw);
 
 				await localStorage.addImageInfo(image, imageInfo);
-				Console.WriteLine("done: " + image.Id);
-				Thread.Sleep(5000);
+				Console.WriteLine(module.ModuleName + " done: " + image.Id);
+				//Thread.Sleep(5000);
 			}
 		}
 

@@ -21,10 +21,10 @@ namespace ImageAnalyzerGUI {
 
 		private Process _crawler;
 		private Process _analyzer;
-		private Storage storage;
+		private Storage _storage;
 		public MainWindow () {
 			InitializeComponent();
-			storage = new Storage();
+			_storage = new Storage();
 		}
 
 		private void Browse_Click (object sender, RoutedEventArgs e) {
@@ -66,10 +66,13 @@ namespace ImageAnalyzerGUI {
 				Path = path
 			};
 
-			storage.AddModule(module);
+			_storage.AddModule(module);
 
-			_analyzer.Kill();
-			_analyzer.Start();
+			if (_analyzer != null) {
+				_analyzer.Kill();
+				_analyzer.Start();
+			}
+
 		}
 
 		private void AddProfiles_Click (object sender, RoutedEventArgs e) {
@@ -83,11 +86,11 @@ namespace ImageAnalyzerGUI {
 			foreach (var url in profileStrings) {
 				profilesList.Add(new Profile() {
 					Url = url,
-					State = "FREE"
+					State = StateEnum.FREE
 				});
 			}
 
-			storage.AddProfiles(profilesList);
+			_storage.AddProfiles(profilesList);
 		}
 
 		private void Stop_Click (object sender, RoutedEventArgs e) {

@@ -22,9 +22,18 @@ namespace ImageAnalyzer {
 		}
 
 		[BsonElement("state")]
-		public String State {
+		[BsonRepresentation(BsonType.String)]
+		public StateEnum State {
 			get;
 			set;
 		}
 	}
+
+	public enum StateEnum {
+		FREE,
+		LOCK,
+		DONE
+	}
 }
+
+

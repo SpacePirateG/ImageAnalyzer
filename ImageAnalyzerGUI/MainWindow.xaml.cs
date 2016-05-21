@@ -41,6 +41,8 @@ namespace ImageAnalyzerGUI {
 		}
 
 		private void Start_Click (object sender, RoutedEventArgs e) {
+			if (_crawler != null || _analyzer != null)
+				return;
 			_crawler = new Process();
 
 			_crawler.StartInfo.FileName = "node.exe";
@@ -59,7 +61,7 @@ namespace ImageAnalyzerGUI {
 			string path = ModulePath.Text;
 			if (path == String.Empty || path.IndexOf(".dll") != path.Length - 4)
 				return;
-			
+
 			path = System.IO.Path.GetFullPath(path);
 
 			Module module = new Module() {
@@ -80,7 +82,7 @@ namespace ImageAnalyzerGUI {
 			if (profiles == String.Empty)
 				return;
 
-			var profileStrings = profiles.Split(new String[]{"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+			var profileStrings = profiles.Split(new String[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 			List<Profile> profilesList = new List<Profile>();
 
 			foreach (var url in profileStrings) {
@@ -94,13 +96,15 @@ namespace ImageAnalyzerGUI {
 		}
 
 		private void Stop_Click (object sender, RoutedEventArgs e) {
-			if (_crawler != null && _analyzer != null) {
+			if (_crawler != null && !_crawler.HasExited) {
 				_crawler.Kill();
-				_analyzer.Kill();
 				_crawler = null;
-				_analyzer = null;
 			}
 
+			if (_analyzer != null && !_analyzer.HasExited) {
+				_analyzer.Kill();
+				_analyzer = null;
+			}
 		}
 	}
 }

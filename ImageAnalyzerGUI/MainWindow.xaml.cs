@@ -96,15 +96,13 @@ namespace ImageAnalyzerGUI {
 		}
 
 		private void Stop_Click (object sender, RoutedEventArgs e) {
-			if (_crawler != null && !_crawler.HasExited) {
+			if (_crawler != null && !_crawler.HasExited)
 				_crawler.Kill();
-				_crawler = null;
-			}
+			_crawler = null;
 
-			if (_analyzer != null && !_analyzer.HasExited) {
+			if (_analyzer != null && !_analyzer.HasExited) 
 				_analyzer.Kill();
-				_analyzer = null;
-			}
+			_analyzer = null;
 		}
 	}
 }

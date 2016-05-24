@@ -58,13 +58,20 @@ namespace ImageAnalyzer
 			Storage localStorage = new Storage();
 			while (true) {
 				Image image = await localStorage.getNextRawImage(module.ModuleName);
+				if (image == null)
+					continue;
 
 				byte[] raw = Convert.FromBase64String(image.Data);
-				ImageInfo imageInfo =await module.Analyze(raw);
-
+				
+				ImageInfo imageInfo;
+				try {
+					imageInfo = await module.Analyze(raw);
+				}
+				catch (Exception ex) {
+					break;
+				}
 				await localStorage.addImageInfo(image, imageInfo);
 				Console.WriteLine(module.ModuleName + " done: " + image.Id);
-				//Thread.Sleep(5000);
 			}
 		}
 

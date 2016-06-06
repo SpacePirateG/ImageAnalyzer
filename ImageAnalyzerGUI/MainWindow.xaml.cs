@@ -104,5 +104,9 @@ namespace ImageAnalyzerGUI {
 				_analyzer.Kill();
 			_analyzer = null;
 		}
+
+		private void Monitor_Click (object sender, RoutedEventArgs e) {
+			new Monitor().Show();
+		}
 	}
 }

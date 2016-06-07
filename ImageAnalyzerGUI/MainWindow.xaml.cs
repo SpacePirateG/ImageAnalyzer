@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Configuration;
 using ImageAnalyzer;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ImageAnalyzerGUI {
 	public partial class MainWindow : Window {
@@ -24,6 +25,8 @@ namespace ImageAnalyzerGUI {
 		private Process _analyzer;
 		private Storage _storage;
 		private List<string> _moduleNames;
+		private Window _monitor;
+		private Regex profilePattern = new Regex(ConfigurationManager.AppSettings["profilePattern"]);
 		public MainWindow () {
 			InitializeComponent();
 			_storage = new Storage();
@@ -88,13 +91,20 @@ namespace ImageAnalyzerGUI {
 			List<Profile> profilesList = new List<Profile>();
 
 			foreach (var url in profileStrings) {
-				profilesList.Add(new Profile() {
-					Url = url,
-					State = StateEnum.FREE
-				});
+				if (isValidProfile(url)) {
+					profilesList.Add(new Profile() {
+						Url = url,
+						State = StateEnum.FREE
+					});
+				}
 			}
 
 			_storage.AddProfiles(profilesList);
+			Profiles.Text = String.Empty;
+		}
+
+		private bool isValidProfile (string profile) {
+			return profilePattern.IsMatch(profile);
 		}
 
 		private void Stop_Click (object sender, RoutedEventArgs e) {
@@ -122,7 +132,25 @@ namespace ImageAnalyzerGUI {
 				}
 			}
 
-			new Monitor(_moduleNames).Show();
+			if (_monitor != null) {
+				_monitor.Focus();
+			} else {
+				_monitor = new Monitor(_moduleNames);
+				_monitor.Closing += OnMonitorWindowClosing;
+				_monitor.Show();
+			}
+			
+		}
+
+		public void OnMonitorWindowClosing (object sender, System.ComponentModel.CancelEventArgs e) {
+			_monitor = null;
+		}
+
+		private void Window_Closing (object sender, System.ComponentModel.CancelEventArgs e) {
+			if (_monitor != null) {
+				_monitor.Close();
+				_monitor = null;
+			}
 		}
 	}
 }

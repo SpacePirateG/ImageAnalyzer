@@ -19,14 +19,12 @@ namespace ImageAnalyzerGUI {
 	/// </summary>
 	public partial class Monitor : Window {
 		
-		private IEnumerable<string> _moduleNames;
 		private Task task;
 		private bool stopState = false;
 		public Monitor (IEnumerable<string> moduleNames) {
 			InitializeComponent();
-			_moduleNames = moduleNames;
 
-			Modules.ItemsSource = _moduleNames;
+			Modules.ItemsSource = moduleNames;
 
 			task = new Task(Watch);
 			task.Start();

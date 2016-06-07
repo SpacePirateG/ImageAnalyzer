@@ -1,8 +1,13 @@
 ﻿<Window x:Class="ImageAnalyzerGUI.Monitor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Monitor" Height="300" Width="300">
+        Title="Monitor" Height="345" Width="354" Closing="Window_Closing">
     <Grid>
-        
+        <ListBox Name="Modules" HorizontalAlignment="Left" Height="216" Margin="10,10,0,0" VerticalAlignment="Top" Width="326" FontSize="18"/>
+        <Label Content="Обработанно:" HorizontalAlignment="Left" Height="35" Margin="10,231,0,0" VerticalAlignment="Top" Width="173" FontSize="18"/>
+        <Label Content="Собрано изображений: " HorizontalAlignment="Left" Margin="10,272,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox Name="ImgCount" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="220,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" FontSize="18"/>
+        <TextBox Name="AnalyzedCount" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="220,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" FontSize="18"/>
+
     </Grid>
 </Window>

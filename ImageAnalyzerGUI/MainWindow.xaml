@@ -13,6 +13,6 @@
         <Button Name="AddProfiles" Content="Добавить" HorizontalAlignment="Left" Margin="10,505,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Click="AddProfiles_Click"/>
         <Button Name="AddPModule" Content="Добавить" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="1.528,-0.287" FontSize="20" Click="AddPModule_Click"/>
         <Button Name="Stop" Content="Остановить" HorizontalAlignment="Left" Margin="316,10,0,0" VerticalAlignment="Top" Width="191" FontSize="24" Click="Stop_Click"/>
-        <Button Name="Monitor" Content="Мониторинг" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="113" FontSize="14" Height="24"/>
+        <Button Name="Monitor" Content="Мониторинг" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="113" FontSize="14" Height="23" Click="Monitor_Click"/>
     </Grid>
 </Window>

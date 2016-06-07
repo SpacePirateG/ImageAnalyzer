@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Configuration;
 using ImageAnalyzer;
+using System.Reflection;
 
 namespace ImageAnalyzerGUI {
 	public partial class MainWindow : Window {
@@ -22,6 +23,7 @@ namespace ImageAnalyzerGUI {
 		private Process _crawler;
 		private Process _analyzer;
 		private Storage _storage;
+		private List<string> _moduleNames;
 		public MainWindow () {
 			InitializeComponent();
 			_storage = new Storage();
@@ -64,7 +66,7 @@ namespace ImageAnalyzerGUI {
 
 			path = System.IO.Path.GetFullPath(path);
 
-			Module module = new Module() {
+			ImageAnalyzer.Module module = new ImageAnalyzer.Module() {
 				Path = path
 			};
 
@@ -106,7 +108,21 @@ namespace ImageAnalyzerGUI {
 		}
 
 		private void Monitor_Click (object sender, RoutedEventArgs e) {
-			new Monitor().Show();
+
+			if (_moduleNames == null) {
+				_moduleNames = new List<string>();
+				List<String> modulePaths = _storage.GetModulesPaths();
+
+				foreach (string modulePath in modulePaths) {
+					Assembly assembly = Assembly.LoadFile(modulePath);
+					foreach (var type in assembly.ExportedTypes) {
+						if (typeof(IAnalyzeModule).IsAssignableFrom(type))
+							_moduleNames.Add(((IAnalyzeModule)Activator.CreateInstance(type)).ModuleName);
+					}
+				}
+			}
+
+			new Monitor(_moduleNames).Show();
 		}
 	}
 }

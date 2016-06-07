@@ -36,12 +36,12 @@ namespace ImageAnalyzer {
 		}
 
 		public async Task<Image> getNextRawImage (String moduleName) {
-		
-		var builder = Builders<Image>.Filter;
-		var filter = builder.Where(elem => !elem.Info.Any(info => info.Module == moduleName));
-		Image result = await _images.Find(filter).FirstOrDefaultAsync();
 
-		return result;
+			var builder = Builders<Image>.Filter;
+			var filter = builder.Where(elem => !elem.Info.Any(info => info.Module == moduleName));
+			Image result = await _images.Find(filter).FirstOrDefaultAsync();
+
+			return result;
 		}
 
 		public async Task addImageInfo (Image image, ImageInfo imageInfo) {

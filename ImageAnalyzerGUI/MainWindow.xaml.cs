@@ -152,5 +152,9 @@ namespace ImageAnalyzerGUI {
 				_monitor = null;
 			}
 		}
+
+		private void Information_Click (object sender, RoutedEventArgs e) {
+			new Information().ShowDialog();
+		}
 	}
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
+using System.Configuration;
 
 namespace ImageAnalyzerGUI {
 	/// <summary>
@@ -38,14 +39,15 @@ namespace ImageAnalyzerGUI {
 
 				if (selectedItem!=null) {
 					var moduleName = selectedItem.ToString();
-					var countImg = storage.GetImagesCount().ToString();
 					var countAnalyzed = storage.GetAnalyzedCount(moduleName).ToString();
 
-					ImgCount.Dispatcher.BeginInvoke(new Action(() => ImgCount.Text = countImg));
 					AnalyzedCount.Dispatcher.BeginInvoke(new Action(() => AnalyzedCount.Text = countAnalyzed));
 				}
 
-				Thread.Sleep(200);
+				var countImg = storage.GetImagesCount().ToString();
+				ImgCount.Dispatcher.BeginInvoke(new Action(() => ImgCount.Text = countImg));
+
+				Thread.Sleep(Int32.Parse(ConfigurationManager.AppSettings["monitorInterval"]));
 			}
 			
 		}

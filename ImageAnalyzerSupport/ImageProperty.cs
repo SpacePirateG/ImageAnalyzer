@@ -16,14 +16,8 @@ namespace ImageAnalyzer {
 			set;
 		}
 
-		[BsonElement("type")]
-		public string Type {
-			get;
-			set;
-		}
-
 		[BsonElement("value")]
-		public string Value {
+		public BsonValue Value {
 			get;
 			set;
 		}

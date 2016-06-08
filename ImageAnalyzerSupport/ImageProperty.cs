@@ -17,8 +17,7 @@ namespace ImageAnalyzer {
 		}
 
 		[BsonElement("type")]
-		[BsonRepresentation(BsonType.String)]
-		public TypeEnum Type {
+		public string Type {
 			get;
 			set;
 		}
@@ -28,12 +27,5 @@ namespace ImageAnalyzer {
 			get;
 			set;
 		}
-	}
-
-	public enum TypeEnum {
-		INT,
-		STRING,
-		DOUBLE,
-		BOOL
 	}
 }

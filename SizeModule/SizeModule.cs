@@ -22,12 +22,12 @@ namespace SizeModule {
 			List<ImageProperty> imageProps = new List<ImageProperty>(){
 				new ImageProperty(){
 					Name = "width",
-					Type = TypeEnum.INT,
+					Type = "INT",
 					Value = this.image.Width.ToString()
 				},
 				new ImageProperty(){
 					Name = "height",
-					Type = TypeEnum.INT,
+					Type = "INT",
 					Value = this.image.Height.ToString()
 				}
 			};

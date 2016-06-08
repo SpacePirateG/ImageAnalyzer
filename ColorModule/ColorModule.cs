@@ -31,7 +31,7 @@ namespace ColorModule {
 		private ImageProperty GetCountColors (Dictionary<int, int> usedColors) {
 			return new ImageProperty() {
 				Name = "countColors",
-				Type = TypeEnum.INT,
+				Type = "INT",
 				Value = usedColors.Count().ToString()
 			};
 		}
@@ -45,7 +45,7 @@ namespace ColorModule {
 			for(int i=0; i < colors.Count(); i++){
 				properties.Add(new ImageProperty() {
 					Name = propertyNames[i] + "MostUsedColor",
-					Type = TypeEnum.INT,
+					Type = "INT_RGB",
 					Value = colors.ElementAt(i).Key.ToString()
 				});
 			}

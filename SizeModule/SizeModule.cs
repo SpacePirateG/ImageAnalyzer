@@ -22,13 +22,11 @@ namespace SizeModule {
 			List<ImageProperty> imageProps = new List<ImageProperty>(){
 				new ImageProperty(){
 					Name = "width",
-					Type = "INT",
-					Value = this.image.Width.ToString()
+					Value = this.image.Width
 				},
 				new ImageProperty(){
 					Name = "height",
-					Type = "INT",
-					Value = this.image.Height.ToString()
+					Value = this.image.Height
 				}
 			};
 

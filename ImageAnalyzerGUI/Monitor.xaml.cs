@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Configuration;
+using System.Reflection;
+using ImageAnalyzer;
 
 namespace ImageAnalyzerGUI {
 	/// <summary>
@@ -22,18 +24,46 @@ namespace ImageAnalyzerGUI {
 		
 		private Task task;
 		private bool stopState = false;
-		public Monitor (IEnumerable<string> moduleNames) {
+		public Monitor () {
 			InitializeComponent();
-
-			Modules.ItemsSource = moduleNames;
 
 			task = new Task(Watch);
 			task.Start();
 		}
 
+		private static bool UpdateModuleNames(Storage storage, Dictionary<string, string> moduleNames){
+			List<String> modulePaths = storage.GetModulesPaths();
+			bool changed = modulePaths.Count != moduleNames.Count;
+
+			foreach (string modulePath in modulePaths) {
+				if (moduleNames.Keys.Contains(modulePath))
+					continue;
+
+				Assembly assembly = Assembly.LoadFile(modulePath);
+				foreach (var type in assembly.ExportedTypes) {
+					if (typeof(IAnalyzeModule).IsAssignableFrom(type)) {
+						moduleNames.Add(modulePath, ((IAnalyzeModule)Activator.CreateInstance(type)).ModuleName);
+						changed = true;
+					}
+				}
+
+			}
+
+			return changed;
+		}
+
 		public void Watch () {
-			Storage storage = new Storage(); 
+			Storage storage = new Storage();
+			Dictionary<string, string> moduleNames = new Dictionary<string, string>();
+
 			while (!stopState) {
+				bool modulesChanged = UpdateModuleNames(storage, moduleNames);
+				if(modulesChanged)
+					Modules.Dispatcher.BeginInvoke(new Action(() => {
+						Modules.ItemsSource = moduleNames.Values;
+						Modules.Items.Refresh();
+					})).Wait();
+				
 				object selectedItem = null;
 				Modules.Dispatcher.BeginInvoke(new Action(() => selectedItem = Modules.SelectedItem)).Wait();
 

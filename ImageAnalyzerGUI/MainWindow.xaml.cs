@@ -24,7 +24,6 @@ namespace ImageAnalyzerGUI {
 		private Process _crawler;
 		private Process _analyzer;
 		private Storage _storage;
-		private List<string> _moduleNames;
 		private Window _monitor;
 		private Regex profilePattern = new Regex(ConfigurationManager.AppSettings["profilePattern"]);
 		public MainWindow () {
@@ -119,23 +118,10 @@ namespace ImageAnalyzerGUI {
 
 		private void Monitor_Click (object sender, RoutedEventArgs e) {
 
-			if (_moduleNames == null) {
-				_moduleNames = new List<string>();
-				List<String> modulePaths = _storage.GetModulesPaths();
-
-				foreach (string modulePath in modulePaths) {
-					Assembly assembly = Assembly.LoadFile(modulePath);
-					foreach (var type in assembly.ExportedTypes) {
-						if (typeof(IAnalyzeModule).IsAssignableFrom(type))
-							_moduleNames.Add(((IAnalyzeModule)Activator.CreateInstance(type)).ModuleName);
-					}
-				}
-			}
-
 			if (_monitor != null) {
 				_monitor.Focus();
 			} else {
-				_monitor = new Monitor(_moduleNames);
+				_monitor = new Monitor();
 				_monitor.Closing += OnMonitorWindowClosing;
 				_monitor.Show();
 			}

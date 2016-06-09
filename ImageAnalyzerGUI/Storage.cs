@@ -21,16 +21,28 @@ namespace ImageAnalyzerGUI {
 			_client = new MongoClient();
 			_database = _client.GetDatabase("work");
 			_profiles = _database.GetCollection<Profile>("profiles");
+			_profiles.Indexes.DropAll();
+			_profiles.Indexes.CreateOne(Builders<Profile>.IndexKeys.Ascending("url"), new CreateIndexOptions() { Unique = true });
 			_modules = _database.GetCollection<Module>("modules");
+			_modules.Indexes.DropAll();
+			_modules.Indexes.CreateOne(Builders<Module>.IndexKeys.Ascending("path"), new CreateIndexOptions() { Unique = true });
 			_images = _database.GetCollection<Image>("images");
 		}
 
 		public void AddModule (Module module) {
-			_modules.InsertOne(module);
+			try {
+				_modules.InsertOne(module);
+			}
+			catch (MongoWriteException ex) {}
 		}
 
 		public void AddProfiles (List<Profile> profiles) {
-			_profiles.InsertMany(profiles);
+			foreach (var profile in profiles) {
+				try {
+					_profiles.InsertOne(profile);
+				}
+				catch (MongoWriteException ex) {}
+			}
 		}
 
 		public List<String> GetModulesPaths () {
